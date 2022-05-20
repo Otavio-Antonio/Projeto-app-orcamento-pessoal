@@ -49,9 +49,19 @@ function cadastraDespesa(){
 
     let despesa = new Despesa(ano.value, mes.value, dia.value, tipo.value, descricao.value, valor.value);
     if(despesa.validar()){
-        console.log('Dados validos')
-        //bd.gravar(despesa);
+        document.getElementById('tituloModal').innerHTML = 'Sucesso!';
+        document.getElementById('tituloModal').className = 'modal-title text-success';
+        document.getElementById('modalTexto').innerHTML = 'Despesa cadastrada com sucesso';
+        document.getElementById('btnModal').innerHTML = 'Continuar cadastrando';
+        document.getElementById('btnModal').className = 'btn btn-success';
+        bd.gravar(despesa);
+        $('#modalDeValidacao').modal('show');
     }else{
-        console.log('Dados invalidos')
+        document.getElementById('tituloModal').innerHTML = 'Erro!';
+        document.getElementById('tituloModal').className = 'modal-title text-danger';
+        document.getElementById('modalTexto').innerHTML = 'Verifique se todos os campos foram preenchidos';
+        document.getElementById('btnModal').innerHTML = 'Voltar e corrigir';
+        document.getElementById('btnModal').className = 'btn btn-danger';
+        $('#modalDeValidacao').modal('show');
     }
 }
