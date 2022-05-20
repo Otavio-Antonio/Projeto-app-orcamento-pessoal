@@ -38,8 +38,8 @@ class Bd{
 
 let bd = new Bd();
 
-
 function cadastraDespesa(){
+
     let ano = document.getElementById('ano');
     let mes = document.getElementById('mes');
     let dia = document.getElementById('dia');
@@ -48,10 +48,15 @@ function cadastraDespesa(){
     let valor = document.getElementById('valor');
 
     let despesa = new Despesa(ano.value, mes.value, dia.value, tipo.value, descricao.value, valor.value);
+  
     if(despesa.validar()){
         console.log('Dados validos')
         //bd.gravar(despesa);
     }else{
         console.log('Dados invalidos')
     }
+    gravar(despesa);
+}
+function gravar(d){
+    localStorage.setItem('despesa',JSON.stringify(d));
 }
